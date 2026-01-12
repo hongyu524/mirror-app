@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "Mirror App",
+    "slug": "mirror-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/mirror_logo.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/mirror_logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mirror.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/mirror_logo.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/mirror_logo.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Mirror to access your photos to attach them to moments."
+        }
+      ]
+    ],
+    "extra": {}
+  }
+}
+

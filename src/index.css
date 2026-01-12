@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #0a1729;
+    --bg-secondary: #0d1e3b;
+    --bg-card: #1a2332;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --accent-blue: #4a90e2;
+    --accent-blue-hover: #357abd;
+  }
+
+  body {
+    @apply bg-[#0a1729] text-white;
+  }
+
+  select option {
+    padding: 0.5rem;
+    background-color: #1a2332;
+    color: white;
+  }
+
+  select option:checked,
+  select option:hover {
+    background: linear-gradient(0deg, #3b82f6 0%, #3b82f6 100%);
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 0.3s ease-out;
+  }
+}
