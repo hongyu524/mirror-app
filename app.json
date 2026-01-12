@@ -16,13 +16,19 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.mirror.app"
+      "bundleIdentifier": "com.hesra.mirror",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/mirror_logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/mirror_logo.png"
@@ -33,9 +39,13 @@
         {
           "photosPermission": "Allow Mirror to access your photos to attach them to moments."
         }
-      ]
+      ],
+      "expo-font"
     ],
-    "extra": {}
+    "extra": {
+      "eas": {
+        "projectId": "2eb072e2-c900-4dde-898f-50ff9595f71c"
+      }
+    }
   }
 }
-

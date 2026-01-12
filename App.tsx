@@ -6,6 +6,8 @@ import { ThemeProvider, useTheme } from './src/contexts/ThemeContext.native';
 import { AuthProvider, useAuth } from './src/contexts/AuthContext.native';
 import { LanguageProvider } from './src/contexts/LanguageContext.native';
 import * as Linking from 'expo-linking';
+import { AppErrorBoundary } from './src/components/AppErrorBoundary';
+import { logStartup } from './src/utils/startupLog';
 
 // Import React Native components
 import { Auth } from './src/components/Auth.native';
@@ -34,6 +36,7 @@ function AppContent() {
   const [scrollToReflections, setScrollToReflections] = useState(false);
 
   useEffect(() => {
+    logStartup('Init deep link handling');
     // Handle deep linking for password reset
     const handleDeepLink = async () => {
       const initialUrl = await Linking.getInitialURL();
@@ -109,6 +112,7 @@ function AppContent() {
 
 function AppWithTheme() {
   const { resolvedTheme } = useTheme();
+  logStartup('Mount AppWithTheme');
   return (
     <>
       <StatusBar style={resolvedTheme === 'light' ? 'dark' : 'light'} />
@@ -118,16 +122,19 @@ function AppWithTheme() {
 }
 
 function App() {
+  logStartup('App entry loaded');
   return (
-    <SafeAreaProvider>
-      <ThemeProvider>
-        <AuthProvider>
-          <LanguageProvider>
-            <AppWithTheme />
-          </LanguageProvider>
-        </AuthProvider>
-      </ThemeProvider>
-    </SafeAreaProvider>
+    <AppErrorBoundary>
+      <SafeAreaProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <LanguageProvider>
+              <AppWithTheme />
+            </LanguageProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </AppErrorBoundary>
   );
 }
 
